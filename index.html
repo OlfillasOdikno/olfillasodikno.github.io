@@ -2,6 +2,12 @@
 
 <head>
   <style>
+    :root {
+      --bat-width: 20px;
+      --bat-height: 100px;
+      --ball-height: 15px;
+      --ball-width: 15px;
+    }
 
     body {
       background-color: #121212;
@@ -19,7 +25,7 @@
       top: 0;
       bottom: 0;
       margin: auto;
-      text-align: center;
+      text-align: center; 
       font-family: monospace;
       font-size: 4em;
       filter: blur(2px);
@@ -27,10 +33,10 @@
 
     .bat {
       background-color: white;
-      width: 20px;
-      height: 100px;
+      width: var(--bat-width);
+      height: var(--bat-height);
       margin: auto;
-      animation: moveBallV 5s linear infinite;
+      animation: moveBatV 5s linear infinite;
       transform: translateY(-50%);
     }
 
@@ -46,38 +52,60 @@
 
     #ball {
       background-color: white;
-      width: 15px;
-      height: 15px;
+      width: var(--ball-width);
+      height: var(--ball-height);
       position: absolute;
       margin: auto;
       animation: moveBallH 3s infinite linear, moveBallV 5s linear infinite;
+
     }
 
     @keyframes moveBallV {
       0% {
-        top: 100%;
+        top: calc(100% - var(--ball-height));
+        transform: rotate(0deg);
+
       }
 
       50% {
         top: 0%;
+        transform: rotate(1800deg);
+
       }
 
       100% {
-        top: 100%;
+        top: calc(100% - var(--ball-height));
+        transform: rotate(360deg);
+
+      }
+    }
+
+    @keyframes moveBatV {
+      0% {
+        top: calc(100% - var(--bat-height)/2);
+
+      }
+
+      50% {
+        top: calc(var(--bat-height)/2);
+      }
+
+      100% {
+        top: calc(100% - var(--bat-height)/2);
       }
     }
 
     @keyframes moveBallH {
       0% {
-        left: 100%;
+        left: calc(100% - var(--bat-width));
       }
 
       50% {
-        left: 0%;
+        left: var(--bat-width);
       }
 
       100% {
-        left: 100%;
+        left: calc(100% - var(--bat-width));
       }
     }
   </style>
@@ -87,13 +115,15 @@
   <div id="name">
     <h1>localo</h1>
   </div>
-
+  
   <div id="p1" class="bat">
   </div>
   <div id="p2" class="bat">
   </div>
+  
+  
   <div id="ball"></div>
-
+  
 </body>
 
 </html>
