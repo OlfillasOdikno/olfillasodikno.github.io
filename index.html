@@ -10,13 +10,14 @@
     }
 
     body {
-      background-color: #121212;
+      background-color: #282828;
       overflow: hidden;
     }
 
     #name {
       display: flex;
       justify-content: center;
+      flex-direction: column;
       align-items: center;
       color: green;
       position: absolute;
@@ -25,9 +26,30 @@
       top: 0;
       bottom: 0;
       margin: auto;
-      text-align: center; 
+      text-align: center;
       font-family: monospace;
       font-size: 4em;
+    }
+
+    h1 {
+      margin: 10px;
+    }
+
+    a {
+      color: #08c;
+    }
+
+    a:hover {
+      animation: filter 1s linear infinite;
+    }
+
+    @keyframes filter {
+      0%, 100% {
+        filter: hue-rotate(0deg);
+      } 
+      50% {
+        filter: hue-rotate(180deg);
+      }
     }
 
     .bat {
@@ -112,16 +134,18 @@
 <body>
   <div id="name">
     <h1>localo</h1>
+    <a href="writeups">Writeups</a>
   </div>
-  
+
+
   <div id="p1" class="bat">
   </div>
   <div id="p2" class="bat">
   </div>
-  
-  
+
+
   <div id="ball"></div>
-  
+
 </body>
 
 </html>
